@@ -139,7 +139,6 @@ lessons = [
 
 const result = categories.map((category) => {
   const resCourse = courses
-    // .filter((course) => category.id === course.category_id)
     .map((course) => {
       if (category.id === course.category_id) {
         const findLesson = lessons.filter(

@@ -2,12 +2,12 @@ const ll = [
   {
     id: 1,
     name: "Web Application",
-    course: [
+    courses: [
       {
         id: 1,
         name: "Web Development",
         category_id: 1,
-        lesson: [
+        lessons: [
           { id: 1, number: 1, title: "Web Development Lesson 1", course_id: 1 },
           { id: 2, number: 2, title: "Web Development Lesson 2", course_id: 1 },
           { id: 3, number: 3, title: "Web Development Lesson 3", course_id: 1 },
@@ -35,7 +35,7 @@ const ll = [
         id: 2,
         name: "Mobile Development",
         category_id: 1,
-        lesson: [
+        lessons: [
           {
             id: 4,
             number: 1,
@@ -60,7 +60,7 @@ const ll = [
         id: 3,
         name: "Frontend Development",
         category_id: 1,
-        lesson: [
+        lessons: [
           {
             id: 7,
             number: 1,
@@ -87,42 +87,42 @@ const ll = [
           },
         ],
       },
-      { id: 4, name: "Devop", category_id: 1, lesson: [] },
+      { id: 4, name: "Devop", category_id: 1, lessons: [] },
     ],
   },
   {
     id: 2,
     name: "Digital Marketing",
-    course: [
+    courses: [
       {
         id: 5,
         name: "Getting start your bussinese with AI",
         category_id: 2,
-        lesson: [],
+        lessons: [],
       },
       {
         id: 6,
         name: "Using AI to improve your bussinese",
         category_id: 2,
-        lesson: [],
+        lessons: [],
       },
     ],
   },
   {
     id: 3,
     name: "Design",
-    course: [
+    courses: [
       {
         id: 7,
         name: "Getting Start using Design tool using PS and AI",
         category_id: 3,
-        lesson: [],
+        lessons: [],
       },
       {
         id: 8,
         name: "How to use PS with AI plugin",
         category_id: 3,
-        lesson: [],
+        lessons: [],
       },
     ],
   },
