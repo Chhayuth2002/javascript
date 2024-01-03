@@ -139,20 +139,24 @@ lessons = [
 
 const result = categories.map((category) => {
   const resCourse = courses
-    .filter((course) => category.id === course.category_id)
+    // .filter((course) => category.id === course.category_id)
     .map((course) => {
-      const findLesson = lessons.filter(
-        (lesson) => lesson.course_id === course.id
-      );
-      return {
-        ...course,
-        lesson: findLesson,
-      };
-    });
+      if (category.id === course.category_id) {
+        const findLesson = lessons.filter(
+          (lesson) => lesson.course_id === course.id
+        );
+        return {
+          ...course,
+          lessons: findLesson,
+        };
+      }
+      return null;
+    })
+    .filter((course) => course);
 
   return {
     ...category,
-    course: resCourse,
+    courses: resCourse,
   };
 });
 
