@@ -144,9 +144,14 @@ for (const category of categories) {
 
   for (const course of courses) {
     if (course.category_id === category.id) {
-      const courseLesson = lessons.filter(
-        (lesson) => lesson.course_id === course.id
-      );
+      const courseLesson = [];
+
+      for (const lesson of lessons) {
+        if (lesson.course_id === course.id) {
+          courseLesson.push({ ...lesson });
+        }
+      }
+
       categoryCourse.push({
         ...course,
         lessons: courseLesson,
