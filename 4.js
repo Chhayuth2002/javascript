@@ -2,9 +2,24 @@ const provinces = [];
 let id = 0;
 
 const addProvince = (name) => {
+  if (!isNaN(name)) {
+    console.log("Input name as a string");
+    return;
+  }
+
+  const nameLength = name.length;
+
+  if (nameLength < 10 || nameLength > 50) {
+    console.log("Min 10, Max 50 letter");
+    return;
+  }
+
   const isExisting = provinces.find((province) => province.name === name);
 
-  if (isExisting) return;
+  if (isExisting) {
+    console.log("Duplicate province name");
+    return;
+  }
 
   id += 1;
   provinces.push({
@@ -15,15 +30,35 @@ const addProvince = (name) => {
 };
 
 const addDistrict = (provinceId, name) => {
+  if (isNaN(provinceId)) {
+    console.log("Input province id as a integer");
+    return;
+  }
+
+  if (!isNaN(name)) {
+    console.log("Input district name as a string");
+    return;
+  }
+
+  const nameLength = name.length;
+
+  if (nameLength < 10 || nameLength > 50) {
+    console.log("Min 10, Max 50 letter");
+    return;
+  }
+
   const province = provinces.find((province) => province.id === provinceId);
 
-  if (!province) return;
+  if (!province) {
+    console.log("Province not found");
+    return;
+  }
 
-  const isExisting = province.districts.find(
-    (district) => district.name === name
-  );
+  const isExist = province.districts.find((district) => district.name === name);
 
-  if (isExisting) return;
+  if (isExist) {
+    console.log("Duplicate district name");
+  }
 
   id += 1;
   province.districts.push({
@@ -34,8 +69,33 @@ const addDistrict = (provinceId, name) => {
 };
 
 const addCommune = (districtId, name) => {
+  if (isNaN(districtId)) {
+    console.log("Input district id as a integer");
+    return;
+  }
+
+  if (!isNaN(name)) {
+    console.log("Input district name as a string");
+    return;
+  }
+
+  const nameLength = name.length;
+
+  if (nameLength < 8 || nameLength > 50) {
+    console.log("Min 8, Max 50 letter");
+    return;
+  }
+
   id += 1;
 
+  const isExist = provinces.find((province) =>
+    province.districts.some((district) => district.id === districtId)
+  );
+
+  if (!isExist) {
+    console.log("District id not found");
+    return;
+  }
   provinces.find((province) =>
     province.districts.some((district) => {
       if (district.id === districtId) {
@@ -48,16 +108,20 @@ const addCommune = (districtId, name) => {
   );
 };
 
-addProvince("Province 1");
+addProvince("Province");
 addProvince("Province 2");
 addProvince("Province 3");
-addDistrict(100, "District 1");
+addDistrict("adf", "District 1");
 addDistrict(1, "District 2");
 addDistrict(2, "District 1");
-addDistrict(3, "District 1");
+addDistrict(5, "District 1");
 addCommune(4, "Commune 1");
-addCommune(4, "Commune 2");
+addCommune("adad", "Commune 2");
 addCommune(5, "Commune 1");
+addCommune(100, "Commune 1");
 addCommune(6, "Commune 1");
+addCommune(4, "Commune 1");
+addCommune(6, "Commune 1");
+addCommune(6, "Commune");
 
 console.log(JSON.stringify(provinces));
